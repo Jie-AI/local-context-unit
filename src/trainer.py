@@ -185,6 +185,8 @@ class Trainer(object):
                         best_dev_acc = dev_acc
                         best_epoch = current_epoch
                         best_test_acc = test_acc
+                        self.saver.save(sess, os.path.join(checkpoint_dir, 'model.cpkt'),\
+                            global_step=global_step)
 
                     output = [current_epoch, 'Test', test_acc, loss]
                     print >> sys.stderr, get_cur_time(),  format_str.format(*output)
